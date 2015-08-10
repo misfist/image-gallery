@@ -17,9 +17,6 @@ $(document).ready(function() {
 	}
 
 	$( '#feature-image' ).html( placeholderImage( collection ) );
-
-	//console.log( 'placeholderImage( collection )', placeholderImage( collection ) );
-
 	
 });
 
@@ -61,7 +58,7 @@ function imageCollection( images ) {
 
 		self.items.push( new imageModel( images[index] ) );
 
-		console.log( new imageModel( images[index] ) );
+		//console.log( new imageModel( images[index] ) );
 
 	} );
 
@@ -122,9 +119,5 @@ function imageList( image, setName ) {
 	$( '#image-list' ).append( listItem );
 
 }
-
-
-
-
 
 
