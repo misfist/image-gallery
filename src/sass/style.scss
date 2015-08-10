@@ -1,0 +1,17 @@
+/**
+ * Primary Styles
+ * Author: Patricia Lutz
+ **/
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
+$font-family-base: 'Raleway', sans-serif;
+
+// Import bootstrap and fontawesome
+@import "bootstrap";
+@import "font-awesome";
+
+@import "config";
+
+@import "layout";
+
+@import "theme";

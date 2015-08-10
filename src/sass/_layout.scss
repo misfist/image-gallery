@@ -1,0 +1,17 @@
+
+#feature-image {
+
+	@extend .col-md-8;
+}
+
+#image-list{
+
+	@extend .col-md-4;
+	@extend .list-unstyled;
+
+	img {
+		@extend .img-rounded;
+		width: 150px;
+		height: auto;
+	}
+}
