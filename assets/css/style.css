@@ -3,7 +3,6 @@
  * Primary Styles
  * Author: Patricia Lutz
  **/
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -1394,7 +1393,7 @@ html {
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
@@ -1985,7 +1984,7 @@ pre code {
   clear: both;
 }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, #image-list, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, #feature-image, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, #image-list, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, #feature-image, #collection-description, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -2410,7 +2409,7 @@ pre code {
   }
 }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, #image-list, .col-md-5, .col-md-6, .col-md-7, .col-md-8, #feature-image, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, #image-list, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, #feature-image, #collection-description, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
   }
 
@@ -2422,11 +2421,11 @@ pre code {
     width: 16.66667%;
   }
 
-  .col-md-3 {
+  .col-md-3, #image-list {
     width: 25%;
   }
 
-  .col-md-4, #image-list {
+  .col-md-4 {
     width: 33.33333%;
   }
 
@@ -2442,11 +2441,11 @@ pre code {
     width: 58.33333%;
   }
 
-  .col-md-8, #feature-image {
+  .col-md-8 {
     width: 66.66667%;
   }
 
-  .col-md-9 {
+  .col-md-9, #feature-image, #collection-description {
     width: 75%;
   }
 
@@ -6501,7 +6500,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Raleway", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6623,7 +6622,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Raleway", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -9914,7 +9913,24 @@ button.close {
   content: "";
 }
 
+#image-list {
+  height: 500px;
+  overflow-y: scroll;
+}
 #image-list img {
   width: 150px;
   height: auto;
+}
+
+@media (max-width: 991px) {
+  #image-list {
+    display: table-row;
+  }
+  #image-list li {
+    display: table-cell;
+  }
+  #image-list img {
+    height: 75px;
+    width: auto;
+  }
 }

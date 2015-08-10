@@ -1,12 +1,12 @@
 
 #feature-image {
 
-	@extend .col-md-8;
+	@extend .col-md-9;
 }
 
-#image-list{
+#image-list {
 
-	@extend .col-md-4;
+	@extend .col-md-3;
 	@extend .list-unstyled;
 
 	img {
@@ -14,4 +14,31 @@
 		width: 150px;
 		height: auto;
 	}
+
+	height: 500px;
+	overflow-y: scroll;
+}
+
+#collection-description {
+
+	@extend .col-md-9;
+	
+}
+
+@media (max-width: 991px) { 
+
+	#image-list {
+
+		display: table-row;
+
+		li {
+			display: table-cell;
+		}
+
+		img {
+			height: 75px;
+			width: auto;
+		}
+	}
+
 }
