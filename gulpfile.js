@@ -1,6 +1,6 @@
 /*!
  * gulp
- * $ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
+ * $ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache gulp-bower del --save-dev
  */
 
 // Load plugins
@@ -8,7 +8,6 @@ var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
-    //jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
@@ -18,9 +17,31 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     del = require('del');
 
+var config = {
+     sassPath: './src/sass',
+     bowerDir: './bower_components' 
+}
+
+gulp.task('bower', function() { 
+    return bower()
+         .pipe(gulp.dest(config.bowerDir)) 
+});
+
+gulp.task('icons', function() { 
+    return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*') 
+        .pipe(gulp.dest('./assets/fonts')); 
+});
+
 // Styles
 gulp.task('styles', function() {
-  return sass('src/sass/style.scss', { style: 'expanded' })
+  return sass('src/sass/style.scss', { 
+    style: 'expanded',
+    loadPath: [
+       './src/sass',
+       config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
+       config.bowerDir + '/fontawesome/scss',
+      ]
+    })
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest('assets/css'))
     .pipe(rename({ suffix: '.min' }))
@@ -32,8 +53,6 @@ gulp.task('styles', function() {
 // Scripts
 gulp.task('scripts', function() {
   return gulp.src('src/js/**/*.js')
-    // .pipe(jshint('.jshintrc'))
-    // .pipe(jshint.reporter('default'))
     .pipe(concat('app.js'))
     .pipe(gulp.dest('assets/js'))
     .pipe(rename({ suffix: '.min' }))
@@ -64,7 +83,7 @@ gulp.task('default', ['clean'], function() {
 gulp.task('watch', function() {
 
   // Watch .scss files
-  gulp.watch('src/css/**/*.scss', ['styles']);
+  gulp.watch('src/sass/**/*.scss', ['styles']);
 
   // Watch .js files
   gulp.watch('src/js/**/*.js', ['scripts']);

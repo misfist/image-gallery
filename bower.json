@@ -1,0 +1,28 @@
+{
+  "name": "image-gallery",
+  "version": "0.0.1",
+  "authors": [
+    "Pea <pea@misfist.com>"
+  ],
+  "description": "Experimental image gallery using JS models, collections and JSON",
+  "main": "index.html",
+  "keywords": [
+    "images",
+    "json",
+    "jquery"
+  ],
+  "license": "GPLv3",
+  "homepage": "https://github.com/misfist/image-gallery",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.5",
+    "fontawesome": "~4.4.0"
+  }
+}
