@@ -1,12 +1,24 @@
 
 #feature-image {
 
-	@extend .col-md-9;
+	@extend .col-md-10;
+}
+
+#image-controls {
+
+	@extend .col-md-10;
+
+}
+
+#collection-description {
+
+	@extend .col-md-10;
+
 }
 
 #image-list {
 
-	@extend .col-md-3;
+	@extend .col-md-2;
 	@extend .list-unstyled;
 
 	img {
@@ -16,13 +28,7 @@
 	}
 
 	height: 500px;
-	overflow-y: scroll;
-}
-
-#collection-description {
-
-	@extend .col-md-9;
-	
+	//overflow-y: scroll;
 }
 
 @media (max-width: 991px) { 
@@ -30,6 +36,9 @@
 	#image-list {
 
 		display: table-row;
+		height: inherit;
+		width: 95%;
+		overflow-x: scroll;
 
 		li {
 			display: table-cell;
@@ -39,6 +48,7 @@
 			height: 75px;
 			width: auto;
 		}
+
 	}
 
 }
