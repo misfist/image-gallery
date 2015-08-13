@@ -2,13 +2,43 @@ $(document).ready(function() {
 
 	console.log('loaded');
 
-	var imageData = getJSON( 'data/data.json' );
+	// Load the data and assign to imageData var
 
-	//console.log( 'imageData: ', imageData );
+	var imageData = getJSON( 'data/dataCollections.json' );
 
-	var collection = new imageCollection( imageData );
+	// Get collection name from the data-collection attribute on the #image-list tag
 
-	//console.log( 'collection: ', collection );
+	var collectionName = $( '#image-list' ).attr( 'data-collection' );
+
+	// If there is not data-collection attribute or it's blank, display an error and bail out.
+
+	if( ! collectionName ) {
+		console.error( 'Unable to get collectionName from the data-collection attribute on tag with ID #image-list.' );
+
+		return;
+	}
+
+	//console.log( Object.keys( imageData ) );
+
+	// If data-collection attribute doesn't match one of the collection names in the data file, display an error and bail out.
+
+	if( ! (collectionName in imageData) ) {
+
+		console.error( 'The collection name given in the data-collection attribute didn\'t match any collections in the data set. Please check that the attribute and colleciton name are identical.' );
+
+		return;
+
+	}
+
+	//console.log( 'collectionName ', collectionName );
+
+	// Create new collection based on collectionName attribute - must be exact match
+
+	var collection = new imageCollection( imageData, collectionName );
+
+
+
+	//console.log ( 'collection ', collection );
 
 	for( var i = 0; i < collection.items.length; i++) {
 
@@ -16,7 +46,10 @@ $(document).ready(function() {
 
 	}
 
+	// Load placeholder image (first in collection)
+
 	$( '#feature-image' ).html( placeholderImage( collection ) );
+
 	
 });
 
@@ -49,16 +82,14 @@ function imageModel( image ) {
 }
 
 // Collection
-function imageCollection( images ) {
+function imageCollection( images, collection ) {
 
 	var self = this;
 	this.items = [];
+	
+	$.each( images[collection], function( index, key ) {
 
-	$.each( images, function( index, key ) {
-
-		self.items.push( new imageModel( images[index] ) );
-
-		//console.log( new imageModel( images[index] ) );
+		self.items.push( new imageModel( key ) );
 
 	} );
 
@@ -75,7 +106,7 @@ function placeholderImage( images ) {
 
 
 // Build Image List
-function imageList( image, setName ) {
+function imageList( image ) {
 
 	// <li><a href="#"><img src="{image.path}" alt="{image.title}"></a></li>
 
@@ -109,6 +140,8 @@ function imageList( image, setName ) {
 
 		$( '#feature-image' ).html( featureImage );
 
+		// Need to write out the description too
+
 		//console.log( imageTag );
 
 	} );
@@ -119,5 +152,4 @@ function imageList( image, setName ) {
 	$( '#image-list' ).append( listItem );
 
 }
-
 
